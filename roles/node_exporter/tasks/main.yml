@@ -1,9 +1,10 @@
 
 - name: Download Node exporter
   get_url:
-    url: https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-armv7.tar.gz
+    url: https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.1.2.linux-armv7.tar.gz
     dest: /tmp
-    checksum: sha256:e7f4427a25f1870103588e4968c7dc8c1426c00a0c029d0183a9a7afdd61357b
+    checksum: sha256:a9fe816eb7b976b1587d6d654c437f7d78349f70686fa22ae33e94fe84281af2
+
 
 - name: Create Node exporter folder in opt
   become: yes
@@ -15,7 +16,7 @@
 - name: Extract Node exporter
   become: yes
   unarchive:
-     src: /tmp/node_exporter-1.0.1.linux-armv7.tar.gz
+     src: /tmp/node_exporter-1.1.2.linux-armv7.tar.gz
      dest: /usr/bin/nodeexporter
      remote_src: yes
 
@@ -42,7 +43,7 @@
 
         [Service]
         User=pi
-        ExecStart=/usr/bin/nodeexporter/node_exporter-1.0.1.linux-armv7/node_exporter
+        ExecStart=/usr/bin/nodeexporter/node_exporter-1.1.2.linux-armv7/node_exporter
 
         [Install]
         WantedBy=multi-user.target
